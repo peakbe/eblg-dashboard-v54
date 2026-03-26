@@ -230,6 +230,7 @@ if (!rw) {
 /* Déterminer la phase */
 let phase = "Décollage";
 if (fids.arrivals.length > 0) phase = "Atterrissage";
+console.log("PHASE =", phase);
 
 document.getElementById("runway-info").textContent =
   `Piste ${rw.name} – ${phase}`;
