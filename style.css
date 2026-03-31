@@ -1,210 +1,255 @@
-/* Panneau d'état global METAR */
+/* ======================================================
+   GLOBAL — Glass Tower
+====================================================== */
+
+body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", sans-serif;
+    background: #0a0d10;
+    color: #e8eef5;
+}
+
+/* Effet verre dépoli */
+.glass {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+}
+
+/* ======================================================
+   PANNEAU D'ÉTAT GLOBAL
+====================================================== */
+
 #status-panel {
-    padding: 6px 10px;
-    margin-bottom: 8px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-family: Arial, sans-serif;
-    color: #fff;
-    display: inline-block;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
 .status-ok {
-    background: #28a745;
-}
-
-.status-fallback {
-    background: #ffc107;
-    color: #000;
+    background: rgba(0, 255, 120, 0.12);
+    border: 1px solid rgba(0, 255, 120, 0.25);
+    color: #6aff9c;
 }
 
 .status-offline {
-    background: #dc3545;
+    background: rgba(255, 80, 80, 0.12);
+    border: 1px solid rgba(255, 80, 80, 0.25);
+    color: #ff6b6b;
 }
 
-/* Panneau piste active / crosswind */
+.status-fallback {
+    background: rgba(255, 200, 0, 0.12);
+    border: 1px solid rgba(255, 200, 0, 0.25);
+    color: #ffd86b;
+}
+
+/* ======================================================
+   RUNWAY PANEL
+====================================================== */
+
 #runway-panel {
-    padding: 6px 10px;
-    margin-bottom: 8px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-family: Arial, sans-serif;
-    display: inline-block;
-}
-
-.runway-04 {
-    background: #cfe3ff;
-    color: #003366;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .runway-22 {
-    background: #ffcccc;
-    color: #660000;
+    border-color: rgba(255, 80, 80, 0.35);
+    color: #ff8a8a;
+}
+
+.runway-04 {
+    border-color: rgba(80, 160, 255, 0.35);
+    color: #8ac6ff;
 }
 
 .runway-unknown {
-    background: #e0e0e0;
-    color: #333;
+    color: #9aa3ad;
 }
 
-/* FIDS compact et coloré */
-#fids {
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-}
+/* ======================================================
+   RUNWAY MARKERS (Leaflet)
+====================================================== */
 
-.fids-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 4px 8px;
-    margin: 2px 0;
-    border-radius: 4px;
-}
-
-.fids-row span {
-    flex: 1;
-    text-align: left;
-}
-
-.fids-on-time {
-    background: #d4f8d4;
-}
-
-.fids-delayed {
-    background: #ffe7b3;
-}
-
-.fids-cancelled {
-    background: #ffcccc;
-}
-
-.fids-boarding {
-    background: #cfe3ff;
-}
-
-.fids-unknown {
-    background: #e0e0e0;
-}
-
-/* Carte */
-#map {
-    width: 100%;
-    height: 500px;
-}
-#reset-map {
-    padding: 6px 12px;
-    margin-bottom: 10px;
-    border: none;
-    background: #007bff;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#reset-map:hover {
-    background: #0056b3;
-}
-
-/* ============================
-   SIDEBAR
-============================ */
-
-#sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 260px;
-    height: 100vh;
-    background: #ffffff;
-    border-right: 1px solid #ccc;
-    padding: 15px;
-    overflow-y: auto;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-}
-
-#sidebar h2 {
-    margin-top: 0;
-    font-size: 20px;
-    text-align: center;
-}
-
-.sb-section {
-    margin-bottom: 20px;
-}
-
-.sb-section h3 {
-    margin-bottom: 5px;
-    font-size: 16px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 3px;
-}
 .runway-number {
-    color: white;
-    font-weight: bold;
-    font-size: 14px;
-    text-shadow: 0 0 3px black;
-    text-align: center;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 18px;
+    text-shadow: 0 0 8px rgba(0,0,0,0.9);
 }
 
 .qfu-label {
-    color: #222;
-    font-size: 11px;
+    color: #cfd8e3;
+    font-size: 12px;
     font-weight: 600;
-    text-align: center;
-    text-shadow: 0 0 3px rgba(255,255,255,0.8);
+    text-shadow: 0 0 6px rgba(0,0,0,0.8);
 }
+
+/* ======================================================
+   SONOMÈTRES — Glass Tower
+====================================================== */
 
 #sono-panel {
-    width: 240px;
-    background: #f5f5f5;
-    border-radius: 6px;
-    padding: 8px;
-    font-size: 13px;
-    transition: max-height 0.3s ease;
-    overflow: hidden;
-    max-height: 28px;
-}
-
-#sono-panel.expanded {
-    max-height: 500px;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 #sono-header {
+    font-weight: 700;
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
+    font-size: 16px;
+    color: #e8eef5;
 }
 
 #sono-toggle {
-    border: none;
-    background: none;
-    font-size: 16px;
-    cursor: pointer;
+    font-size: 18px;
+    color: #9aa3ad;
 }
 
 .sono-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 2px 0;
+    padding: 6px 10px;
+    margin: 4px 0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04);
 }
 
-.sono-green { color: green; }
-.sono-red { color: red; }
-.sono-gray { color: #777; }
-
-
-/* ============================
-   MAIN CONTENT
-============================ */
-
-#main {
-    margin-left: 280px; /* espace pour la sidebar */
-    padding: 15px;
+.sono-green {
+    border-color: rgba(0,255,120,0.35);
+    color: #6aff9c;
 }
+
+.sono-red {
+    border-color: rgba(255,80,80,0.35);
+    color: #ff8a8a;
+}
+
+.sono-gray {
+    border-color: rgba(255,255,255,0.15);
+    color: #9aa3ad;
+}
+
+#sono-stats {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #cfd8e3;
+}
+
+/* Mini‑graphique */
+#sono-chart {
+    margin-top: 10px;
+    width: 220px;
+    height: 80px;
+    display: block;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+}
+
+/* ======================================================
+   FIDS — Glass Tower
+====================================================== */
+
+#fids {
+    margin-top: 12px;
+}
+
+.fids-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+.fids-on-time {
+    border-color: rgba(0,255,120,0.35);
+    color: #6aff9c;
+}
+
+.fids-delayed {
+    border-color: rgba(255,200,0,0.35);
+    color: #ffd86b;
+}
+
+.fids-cancelled {
+    border-color: rgba(255,80,80,0.35);
+    color: #ff8a8a;
+}
+
+.fids-boarding {
+    border-color: rgba(80,160,255,0.35);
+    color: #8ac6ff;
+}
+
+.fids-unknown {
+    color: #9aa3ad;
+}
+
+/* ======================================================
+   MAP — Glass Tower
+====================================================== */
 
 #map {
     width: 100%;
     height: 600px;
+    border-radius: 10px;
+    margin-top: 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+#reset-map {
+    margin-top: 10px;
+    padding: 8px 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
     border-radius: 6px;
+    cursor: pointer;
+    color: #e8eef5;
+    font-weight: 600;
+}
+
+#reset-map:hover {
+    background: rgba(255,255,255,0.12);
+}
+
+/* ======================================================
+   METAR / TAF — Glass Tower
+====================================================== */
+
+#metar, #taf {
+    padding: 12px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    margin-top: 12px;
+    font-family: "Consolas", monospace;
+    font-size: 14px;
+    white-space: pre-wrap;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #e8eef5;
 }
